@@ -9,7 +9,6 @@ tags: [  tutorial>beginner, products>sap-hana-streaming-analytics, products>sap-
  - **Proficiency:** Beginner
  - **Tutorials:**
     - [Installing SAP HANA Streaming Analytics for SAP HANA, Express Edition](https://developers.sap.com/tutorials/hxe-ua-installing-streaming.html)
-    - [How to download and install the HANA Eclipse plugin](https://developers.sap.com/tutorials/hxe-howto-eclipse.html)
 
 ## Next Steps
  - [Create a Streaming Project with SAP HANA Streaming Analytics](https://developers.sap.com/tutorials/sds-create-streaming-project.html)
@@ -52,6 +51,8 @@ If you are running Eclipse on a Mac or Linux machine, follow these steps to upda
     sudo sh - c 'echo <hxehost IP address>    hxehost >> /etc/hosts'
     ```
 
+[DONE]
+
 [ACCORDION-END]
 
 [ACCORDION-BEGIN [Step 2: ](Install the plugin)]
@@ -93,6 +94,8 @@ If you are running Eclipse on a Mac or Linux machine, follow these steps to upda
 11. If you are installing the plugin into Eclipse for Linux, log off of the machine and log back in.
 
 
+[DONE]
+
 [ACCORDION-END]
 
 [ACCORDION-BEGIN [Step 3: ](Open the streaming perspectives)]
@@ -107,6 +110,8 @@ If you are running Eclipse on a Mac or Linux machine, follow these steps to upda
 
     ![SAP HANA Streaming Run-Test perspective](open-run-test.png)
 
+
+[DONE]
 
 [ACCORDION-END]
 
@@ -153,6 +158,8 @@ Here we will connect our streaming design time tools to the SAP HANA streaming a
     ![Default Server URL](set-default-server-url.png)
 
 
+[DONE]
+
 [ACCORDION-END]
 
 [ACCORDION-BEGIN [Step 5: ](Add a HANA service)]
@@ -192,5 +199,6 @@ In this step we will create a named **Data Service** on the SAP HANA streaming a
     ![Discover](discover.png)
 
 
-[ACCORDION-END]
+[DONE]
 
+[ACCORDION-END]

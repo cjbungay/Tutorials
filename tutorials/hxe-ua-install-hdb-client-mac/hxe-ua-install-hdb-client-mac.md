@@ -61,6 +61,8 @@ Install the Download Manager to your client machine and download the client pack
     -   `xs.onpremise.runtime.client_darwinintel64.zip`
 
 
+[DONE]
+
 [ACCORDION-END]
 
 [ACCORDION-BEGIN [Step 2: ](Install the SAP HANA HDB client)]
@@ -91,24 +93,26 @@ To install the SAP HANA client on a Mac machine, do the following:
     Follow the instructions on the screen to install the SAP HANA HDB client.
 
 
+[DONE]
+
 [ACCORDION-END]
 
 [ACCORDION-BEGIN [Step 3: ](Log the installation)]
 
 The system automatically logs the SAP HANA HDB client installation. The log files are stored at `%TEMP%\hdb_client_<time_stamp>` for Windows and `/var/temp/hdb_client_<time_stamp>` for Linux.
 
+[DONE]
+
 [ACCORDION-END]
 
 [ACCORDION-BEGIN [Step 4: ](Connect to SAP HANA, express edition)]
 
-Connect to a SAP HANA 2.0, express edition system using either JDBC or Python.
+Connect to a SAP HANA 2.0, express edition system using either JDBC or Python:
 
-See these `Tutorials`:
+[Use Clients to Query an SAP HANA Database](https://developers.sap.com/mission.hana-cloud-clients.html)
 
--   [Connect to SAP HANA, express edition using JDBC](http://developers.sap.com/tutorials/hxe-connect-hxe-using-jdbc.html)
 
--   [Connect to SAP HANA, express edition using Python](http://developers.sap.com/tutorials/hxe-python-connection.html)
-
+[DONE]
 
 [ACCORDION-END]
 
@@ -121,5 +125,7 @@ sudo <unzipped_filepath>/HDB_CLIENT_<version>/hdbuninst
 ```
 
 Follow the instructions on the screen to uninstall the SAP HANA HDB client.
+
+[DONE]
 
 [ACCORDION-END]

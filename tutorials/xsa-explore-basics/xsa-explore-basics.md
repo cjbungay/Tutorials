@@ -9,7 +9,7 @@ time: 10
 
 ## Prerequisites  
  - **Proficiency:** Beginner | Intermediate | Advanced
- - **Tutorials:** [Get an SAP HANA, express edition, instance with XS Advanced applications](https://developers.sap.com/topics/sap-hana-express.html)
+ - **Tutorials:** [Get an SAP HANA, express edition, instance with XS Advanced applications](https://developers.sap.com/topics/hana.html)
 
 
 ## Next Steps
@@ -139,4 +139,3 @@ Use `F8` or the green **run** icon to execute the query. Enter the result of the
 
 [VALIDATE_1]
 [ACCORDION-END]
-

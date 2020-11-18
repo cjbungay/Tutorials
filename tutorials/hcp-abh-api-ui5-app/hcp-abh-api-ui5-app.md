@@ -1,254 +1,311 @@
 ---
-title: Add API Business Hub API to a UI5 Application
-description: Incorporate a SAP API into your UI5 application using Web IDE.
+title: Call API Business Hub API from a SAPUI5 Application
+description: Incorporate an SAP API into your SAPUI5 application using SAP Business Application Studio.
 primary_tag: products>sap-cloud-platform
 auto_validation: false
-author_name: Meredith Hassett
-author_profile: https://github.com/mhassett92
-tags: [  tutorial>beginner, topic>sapui5, products>sap-cloud-platform, products>sap-web-ide ]
+author_name: Marius Obert
+author_profile: https://github.com/IObert
+time: 25
+tags: [  tutorial>beginner, topic>sapui5, products>sap-cloud-platform, products>sap-business-application-studio]
 ---
 
-## Prerequisites  
-- **Proficiency:** Beginner
-- **Tutorials:** [Testing API Business Hub APIs with Curl](https://developers.sap.com/tutorials/hcp-abh-test-locally.html)
-
-
-## Next Steps
- - [Using API Hub with Web IDE](https://developers.sap.com/tutorials/webide-api-hub.html)
 
 ## Details
 ### You will learn  
-In this tutorial, you will build a basic UI5 application that uses data from the SAP Success Factors API, that you test in the SAP Business Hub, to populate a set of tiles. Each User will have a tile that displays relevant information about that person.
+In this tutorial, you will build a basic UI5 application that uses data from the SAP Success Factors API, that you test in the SAP Business Hub, to populate a list. Each User will have a list item that displays relevant information about that person.
 
-> It is important to note that in UI5, it is recommended to use an `ODataModel` with an `OData` service, which is what the Success Factors APIs provided in the API Business Hub are, as UI5 will optimize the data parsing for you. This tutorial uses the pre-generated AJAX REST call available in the code snippets section of the API Business Hub. Using an `ODataModel` is the best practice for UI5 applications but it is not covered in this tutorial. You can find more information about `ODataModels` in the [UI5 Demo Kit](https://sapui5.hana.ondemand.com/#docs/guide/6c47b2b39db9404582994070ec3d57a2.html).
+> It is important to note that in UI5, it is recommended to use an `ODataModel` with an `OData` service, which is what the Success Factors APIs provided in the API Business Hub are, as UI5 will optimize the data parsing for you. This tutorial uses the pre-generated SAPUI5 JSON model from the code snippets section of the API Business Hub. Using an `ODataModel` is the best practice for UI5 applications, but it is not covered in this tutorial. You can find more information about `ODataModels` in the [UI5 Demo Kit](https://sapui5.hana.ondemand.com/#docs/guide/6c47b2b39db9404582994070ec3d57a2.html).
 
-![final output of the UI5 app that includes data from Success Factors](final.png)
-
-### Time to Complete
-**20 Min**
 
 ---
 
-[ACCORDION-BEGIN [Step 1: ](Create a basic UI5 application)]
-In your Web IDE, create a new application from template by selecting **File** > **New** > **Project from Template**.
+[ACCORDION-BEGIN [Step : ](Open the Fiori dev space)]
 
-![file path to create a new application from template](4.png)
 
-Select the **SAPUI5 Application** template. Click **Next**.
+**Start** a dev space of kind *SAP Fiori* and **open** it by clicking its name.
 
-![template to select on 1st wizard screen](5.png)
+!![selectDevSpace](./selectDevSpace.png)
 
-**Name the application.** You should use a descriptive name.
+> Have a look at [this tutorial](appstudio-devspace-fiori-create) if you are unsure how to get here or how to create a dev space.
 
-| Project Name | `APIHubTutorial` |
 
-You can leave the namespace blank to use the default one. Click **Next**.
+[DONE]
+[ACCORDION-END]
+[ACCORDION-BEGIN [Step : ](Connect to a Cloud Foundry endpoint)]
 
-![details to enter on 2nd wizard screen](6.png)
+Make sure you are connected to a Cloud Foundry endpoint to which you will deploy the SAPUI5 application later.
 
-If you want, go ahead and rename the initial view.
+1. Click on the bottom-left corner of the screen to start the connection flow.
 
-| View Name | Main |
+    !![notConnected](./notConnected.png)
 
-Leave the View Type as XML. Click **Finish**.
+2. Enter the Cloud Foundry endpoint you want to connect with. If your environment runs in the EU10-region, this is `https://api.cf.eu10.hana.ondemand.com`. Enter your email and your password to proceed.
 
-![details to enter on the 3rd wizard screen](7.png)
+    !![selectEndpoint](./selectEndpoint.png)
 
-Open the initial controller by selecting `APIHubTutorial` > `webapp` > `controller` > `Main.controller.js` and double clicking the file name.
+3. Next, you need to select the Cloud Foundry Organization and space you want to use. You will see that you are connected to the endpoint once these prompts have been answered.
 
-![file path to find the controller files](8.png)
+    !![connectedEndpoint](./connectedEndpoint.png)
 
-Add an `onInit` function to the controller and **SAVE** your changes.
-
-```javascript
-onInit: function() {
-
-}
-```
-
-![updated main controller file with init code](9.png)
 
 [DONE]
 [ACCORDION-END]
 
-[ACCORDION-BEGIN [Step 2: ](Get JavaScript pre-generated code)]
-In the [API Business Hub](https://api.sap.com), click **APIs** and on the Discover page, go to **All**. Search for the **Success Factors** from the Discover APIs page. Find the **SAP Success Factors Foundation** API package and select it.
+[ACCORDION-BEGIN [Step : ](Create a new project)]
+1. Click on the link **New project From template** on the *Welcome* screen.
 
-![location of API packages in API Business Hub](10.png)
+    !![newproject](./newproject.png)
 
-Once on the API package documentation, select **Artifacts** to see all the APIs available. Find the **User Management** API in the listing. Select the API to open the documentation.
+2. Select **Fiori Project** as the template category you want to use and click **Next**.
 
-![Location of User Information API](11.png)
+    !![fioriTemplate](./fioriTemplate.png)
 
-On the documentation, select **Resource** to find the methods. Find the `GET /User` method and click the **Generate Code** link.
+3. Specify the target environment ( **Cloud Foundry** ) and the template ( **SAPUI5 Application** ) and go to the **Next** screen.
 
-![how to find the API methods and get the pre-generated code](12.png)
+    !![sapui5Template](./sapui5Template.png)
 
-Pick the **JavaScript** tab and then click the **Copy to Clipboard** button.
+4. Name the project **`tutorial`** and proceed by clicking **Next**.
 
-![JavaScript pre-generated code for API call](13.png)
+    !![projectName](./projectName.png)
+
+4. Choose **Standalone Approuter** for the runtime and click **Next**.
+
+    !![approuter](./approuter.png)
+
+4.  Name of the module  **`webapp`** and the namespace **`sap.cp`** and turn authentication off. Go to the **Next** screen.
+
+    !![webapp](./webapp.png)
+
+4. Keep the default view name and add a data service on this screen. Click **Next** to go forward.
+
+    !![viewname](./viewname.png)
+
+4.  Select the **SAP API Business Hub**  as the source system and select as the API. **Enter your SAP credentials** to access the metadata of the selected API service. Click **Next** to create the new project.
+
+    !![datasource](./datasource.png)
+
+
+4. Once the project has been created, the Business Application Studio will prompt you to open the project in a new workspace. Click **Open in New Workspace**.
+
+
+    !![newws](./newws.png)
+
+> **About the "User Management" API**
+
+> In the [API Business Hub](https://api.sap.com), search for the **Success Factors** from the Discover APIs page. Find the **SAP Success Factors Foundation** API package and select it.
+
+> ![location of API packages in API Business Hub](10.png)
+
+> ![location of API packages in API Business Hub](10b.png)
+
+> Once on the API package documentation, find the **User Management** API in the listing. Select the API to open the documentation.
+
+> ![Location of User Information API](11.png)
+
+
+
+[DONE]
+[ACCORDION-END]
+[ACCORDION-BEGIN [Step : ](Redirect incoming traffic to the SAPUI5 app)]
+
+
+The generated code comes ready-to-deploy. By default, the web app will be available at `https://<approuter-url>/<app/id>` and the application router will not redirect traffic that hits the root URL. In this step, you will change this.
+
+1. **Open** the file `webapp/webapp/manifest.json` and find the property `sap.app>id`. The value of this property should be `sap.cp.webapp` but can vary depending on the names you choose in the previous step.
+
+    !![appid](./appid.png)
+
+2. **Open** the file `tutorial-approuter/xs-app.json` and add a new property to define the redirect.
+
+    !![xsapp](./xsapp.png)
+
+
+
+[DONE]
+[ACCORDION-END]
+[ACCORDION-BEGIN [Step: ](Add a list)]
+
+1. **Open** the file `webapp/webapp/manifest.json` and find the property `sap.ui5>models`. Here you can see that the default model is connected to the `mainService` from `sap.app>dataSources`. This is the model you need to user to the data binding in the next sub-step.
+2. **Replace** the existing `<Page>` element in the view file `webapp/webapp/view/View1.view.xml` with the following snippet:
+    ```XML[5-11]
+    <mvc:View controllerName="sap.cp.webapp.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+      <Shell id="shell">
+    		<App id="app">
+    			<pages>
+    				<Page id="page" title="Data from the SAP API Business Hub">
+    				    <content>
+    				          <List items="{/User}">
+    				              <StandardListItem title="{firstName} {lastName}" description="{email}"/>
+    				          </List>
+    				    </content>
+    				</Page>
+    			</pages>
+    		</App>
+    	</Shell>
+    </mvc:View>
+    ```
+3. **Save** your changes.
+
+
+[DONE]
+[ACCORDION-END][ACCORDION-BEGIN [Step: ](Create a new run configuration)]
+
+Create a run configuration to be able to run the web app. This configuration needs to be created only once.
+
+1. To run the UI module, switch to the **Run Configuration** panel on the left-hand bar. Click on the **+** icon to add a new run configuration.  In the prompt, select the UI module **`webapp`** as the app you want to run.
+
+    !![runconfig](./runconfig.png)
+
+2.  Then, select **index.html** to add a new run configuration for your app.
+
+    !![runFile](./runFile.png)
+
+3. Choose the latest UI5 version.
+
+    !![latestUI5](./latestUI5.png)
+
+3. Choose **`Run tutorial-webapp`** as the name of the configuration to create the configuration.
+
+    !![saveConfig](./saveConfig.png)
+
+3. You can see the configuration on the left side now. Expand it to view the *Data Source (Destination)* dependency and click on it to connect the run configuration to the data source.
+
+    !![connectSource](./connectSource.png)
+
+3. Select the **`apihub_sandbox`** data source from the list.
+
+    !![selectABH](./selectABH.png)
+
+3. You are not asked to **enter your credentials** again.
+
+    !![credentials](./credentials.png)
+
+
+[DONE]
+[ACCORDION-END]
+[ACCORDION-BEGIN [Step: ](Run the web app)]
+
+Running your application has several advantages over deploying it. Among others, it's faster, doesn't require a "build" step and won't minify your JavaScript codebase.
+
+1. Run the configuration you just created.
+
+    !![run](./run.png)
+
+
+2. Now the SAP Business Application Studio will start the app. When promoted, selected **Expose and open** to making the local port accessible for testing and debugging. Choose any description for this port.
+
+    !![expose](./expose.png)
+
+
+    > In case you run into a "Attribute 'program' does not exist" error, fix it by running the following command in a **Terminal|New Terminal**:
+
+    > ```Terminal
+    cd tutorial-approuter/
+    npm install
+    ```
+
+3. You should now see the web app open in a new tab:
+
+    !![running](./running.png)
+
+[DONE]
+[ACCORDION-END]
+[ACCORDION-BEGIN [Step : ](Prepare the application for deployment)]
+
+The run configuration automatically pulled your API Key from the SAP API Business Hub. Now you need to find this key and insert it in the application router to make this project deployable.
+
+1. To find the variable `API_Key`, look for an `.env[number]` file in `webapp/` and **open** it:
+
+    !![key](./key.png)
+
+1. We need a custom application router to attach the API key to all incoming requests to make sure the SAP API Business Hub accepts the forwarded requests. Create a new file `tutorial-approuter/approuter.js` to extend the default application router and **replace** the placeholder with the key from the previous sub-step.
+
+    ```JavaScript
+    const approuter = require('@sap/approuter');
+    require('@sap/xsenv').loadEnv();
+
+    const ar = approuter();
+
+    ar.beforeRequestHandler.use(function (req, _res, next) {
+    	req.headers.apikey = <INSERT API KEY>;
+    	next();
+    });
+    ar.start();
+    ```
+
+1. Replace the default application router with extended on in the `tutorial-approuter/package.json` module descriptor.
+
+    ```JavaScript[14]
+    {
+    	"name": "approuter",
+    	"description": "Node.js based application router service for html5-apps",
+    	"engines": {
+    		"node": "^8.0.0 || ^10.0.0"
+    	},
+    	"dependencies": {
+    		"@sap/approuter": "8.5.1"
+    	},
+    	"devDependencies": {
+    		"@sap/html5-repo-mock": "1.6.0"
+    	},
+    	"scripts": {
+    		"start": "node approuter.js",
+    		"start-local": "node node_modules/@sap/html5-repo-mock/index.js"
+    	}
+    }
+    ```
 
 [VALIDATE_2]
 [ACCORDION-END]
+[ACCORDION-BEGIN [Step : ](Build the application)]
 
-[ACCORDION-BEGIN [Step 3: ](Use the API in your application)]
-Back in your Web IDE, in the controller file, **add the copied code from the API Business Hub to your `onInit` function**.
+Build (aka package) the project to a `mtar` archive to deploy it to Cloud Foundry.  
 
-![updated controller with pre-generated API call code](14.png)
+1. Right-click on the `mta.yaml` file and select **Build MTA** to trigger this process.
 
-Make sure to update the `<API_KEY>` to your Application Key from the API Business Hub. It is found at the top of the API Documentation page by clicking the Key icon.
+    !![build](./build.png)
 
-> Please keep in my that API Keys should never be exposed like this in productive applications.
+2. Check the console output to make sure the process started.
 
-**Comment out the `xhr.withCredentials` line**. You can a single line comment by adding a double slash `//` to the beginning of a line. To add a comment block (multiple lines), use `/*  */` around the code to remove.
+    !![state](./buildstate.png)
 
-![commented out line of code in controller](15.png)
+3. Once the build is complete, you can see a message in the log. You will see the generated `mtar` archive in the project tree.
 
-**SAVE** your changes.
+
+
+[DONE]
+[ACCORDION-END]
+[ACCORDION-BEGIN [Step : ](Deploy the archive to Cloud Foundry)]
+
+Now that you created a `mtar` archive, you are all set to deploy the application.
+
+1. Right-click on the `mtar` file and select **Deploy** and **Deploy MTA Archive**.
+
+    !![deploy](./deploy.png)
+
+2. Check the console output to make sure the process started.
+
+3. You will see a success message and the URL of the app in the log once the deployment finished. Open this URL in your browser to start the application.
+
+    !![success](./deploysuccess.png)
+
+> You can also see the URL of the deployed app when running `cf apps` in a new terminal session.
+    !![cfapps](./cfapps.png)
 
 [DONE]
 [ACCORDION-END]
 
-[ACCORDION-BEGIN [Step 4: ](Run your application)]
-**Run** your application by right clicking on your project name and selecting **Run** > **Run as** > **Web Application**.
+[ACCORDION-BEGIN [Step : ](Test to the application)]
 
-![path to run your application](16.png)
+1. **Open** the started application in your browser. You might need to log in with your SAP ID (the same credentials you use for the SAP Cloud Platform Cockpit).
 
-You should see a blank application with a title of **Title**. The pre-generated put the results of the API in the developer console. To find the results, take a look at the console. To get there, in your browser menu, go to **View** > **Developer Tools** > **JavaScript Console**.
 
->The path to get to the developer tools might be slightly different on your computer based on your browser and operating system.
+2.  You should now see a list of the names and email addresses of the users.
 
-![path to find the developer tools in the browser](17.png)
+    ![final running UI5 application](final.png)
 
-If you API call was successful, you should see the JSON in your JavaScript console.
 
-![image of successful API result](18.png)
+> Feel free to add filters to the URL that you specified in the controller to display only a subset of the users. You can also change the bound properties in the view of you instead want to show other attributes of the users. You are just getting started with the SAP API Business Hub.
 
 [DONE]
-[ACCORDION-END]
-
-[ACCORDION-BEGIN [Step 5: ](Add query parameters in the controller)]
-Back in your controller, **add in your query parameters to the URL** so that the results only return the top 5 results and just the User's first and last name and job title. Remember to URL encode your parameters.
-
-```javascript
-+
-"?%24top=5&%24select=firstName%2ClastName%2CjobTitle"
-```
-
-![update get request URL in controller](19.png)
-
-**SAVE** your changes and **RUN** your application. Looking in the console, you should only see 5 results with a much smaller data set for each result.
-
-![updated results in the JavaScript console](20.png)
-
-[DONE]
-[ACCORDION-END]
-
-[ACCORDION-BEGIN [Step 6: ](Display your results in the view)]
-Open up your main view. It can be found in the `view` folder under the `webapp` folder.
-
-![location of view files in project folder](21.png)
-
-The results from the API call being displayed in the console is not very helpful to the end user. You need to create a holder in the main view file to display the results. Add a `TileContainer` with a `StandardTile` in between the `<content>` tags.
-
-```xml
-<TileContainer
-  id="userTiles">
-  <StandardTile
-    title="First Last"
-    info="Job Title"
-    icon="sap-icon://person-placeholder" />
-</TileContainer>
-```
-
-![view with added tile container](22.png)
-
-**SAVE** your changes and **RUN** your application. A single tile should appear on the screen.
-
-![application with single, hard-coded tile](23.png)
-
-Back in the view, update your title to use **results** model data instead of hard coded values. **Set the title to be the first name and last name of the user and the info to be the user's job title.** Update the `<StandardTile>` definition. Leave the placeholder as the icon.
-
-```xml
-<StandardTile
-  title="{results>firstName} {results>lastName}"
-  info="{results>jobTitle}"
-  icon="sap-icon://person-placeholder" />
-```
-
-To have a tile appear for each user in the **results** model data, you need to define the aggregation for the `<TileContainer>`. Set the aggregation property _tiles_ to be the `"{results>/data}"`.
-
-```xml
-<TileContainer
-  id="userTiles"
-  tiles="{results>/data}">
-```
-
-The updated code should look like this.
-
-![updated view code with model binding defined](24.png)
-
-**SAVE** your changes.
-
-[DONE]
-[ACCORDION-END]
-
-[ACCORDION-BEGIN [Step 7: ](Set your data model)]
-Back in your main controller file, you will need to define the model used in the view. You will need to add the `JSONModel` library to your controller. In the **define** at the top of the controller, add the `JSONModel` library by adding `"sap/ui/model/json/JSONModel"`. Also, define the `JSONModel` in the controller function.
-
-```javascript
-sap.ui.define([
-	"sap/ui/core/mvc/Controller",
-	"sap/ui/model/json/JSONModel"
-], function(Controller, JSONModel)
-```
-
-In `onInit` function, you will need to create a new `JSONModel` to house your **results** model data. After the definition of the **data** variable, add a new variable called `userResults`. Give it one property called **data**.
-
-```javascript
-var userResults = new JSONModel({"data": {}});
-```
-
-Additionally, you will need to save the current version of **this** so that you can access the view associated with controller in your API call response. To say **this** current reference, define a new variable called **self** and set it to **this**.
-
-```javascript
-var self = this;
-```
-
-To bind the `userResults` `JSONModel` to the view to use it as the **results** model in the view, you need to set the model for the view and name it **results**.
-
-```javascript
-self.getView().setModel(userResults, "results");
-```
-
-![updated controller code to initialize variables for model](25.png)
-
-Once data is returned from the API call, you can bind it to the **results** model. In the `xhr.addEventListener` function, you can process the data and set it to the model. **The response from the API is coming back as text, so you will need to parse it to JSON.** To do that, use the `JSON.parse()` method. As you saw in the console previous, the actual data you would like to display is inside the _results_ array in the response. To get to that array, you will need to index out the _d_ property first.
-
-```javascript
-var jsonResults = JSON.parse(this.response).d.results;
-```
-
-Finally, set the parsed response to be the **data** property in the **results** model by using the `setProperty` method. This is where the preservation of **this** is important as it has changed since you entered the listener function. Using **self** allows you access to the original controller and its view.
-
-```javascript
-self.getView().getModel("results").setProperty("/data", jsonResults);
-```
-
-![updated listener function code to set data property](26.png)
-
-**SAVE** your changes.
-
-![updated controller code](27.png)
-
-[DONE]
-[ACCORDION-END]
-
-[ACCORDION-BEGIN [Step 8: ](Run your application)]
-**RUN** your application. You should now see 5 tiles with the name of the first 5 users and their job titles. As you change the query parameters in the URL, you would be able to see more users or adjust the details displayed on the title. For example, if a user profile picture was an available field, you could additionally select that field and replace the hard-coded icon with that user's picture. You are just getting started with the SAP API Business Hub. Stayed tuned for more of it's cool features!
-
-![final running UI5 application](final.png)
-
-
-[VALIDATE_8]
 [ACCORDION-END]

@@ -6,8 +6,6 @@ tags: [  tutorial>beginner, products>sap-hana\,-express-edition ]
 time: 15
 ---
 
-## Prerequisites  
-  - [How to download and install the HANA Eclipse plugin](https://developers.sap.com/tutorials/hxe-howto-eclipse.html)
 
 ## Details
 ### You will learn  
@@ -30,6 +28,8 @@ SELECT * FROM SYS.AFL_FUNCTIONS WHERE PACKAGE_NAME='PAL';
 
 If a list of AFL functions is generated, AFL PAL Functions are installed.
 
+
+[DONE]
 
 [ACCORDION-END]
 
@@ -55,6 +55,8 @@ ALTER DATABASE <DATABASE_NAME> ADD 'scriptserver';
 
 
 
+[DONE]
+
 [ACCORDION-END]
 
 [ACCORDION-BEGIN [Step 3: ](Connect to Your Tenant Database)]
@@ -74,6 +76,8 @@ Choose _Authentication by database user_ and add the __SYSTEM__ user with your t
 Click __Finish__.
 
 
+
+[DONE]
 
 [ACCORDION-END]
 
@@ -105,6 +109,8 @@ Importing the data will take some time.
 > You can check if the upload was successful by logging into your tenant database and cascading down from _Catalog_ -> _PAL_ -> _Tables_. You will see a series of tables.
 > ![PAL Tables](PAL_tables_2.png)
 
+
+[DONE]
 
 [ACCORDION-END]
 
@@ -155,6 +161,8 @@ GRANT SELECT ON SCHEMA PAL TO _SYS_REPO;
 
 
 
+[DONE]
+
 [ACCORDION-END]
 
 [ACCORDION-BEGIN [Step 6: ](Log in to the Tenant Database with the New User)]
@@ -173,6 +181,8 @@ Click **Finish**.
 > You may be asked to give your new user a new password.
 
 
+[DONE]
+
 [ACCORDION-END]
 
 [ACCORDION-BEGIN [Step 7: ](Grant Access to New User Schema)]
@@ -185,4 +195,3 @@ GRANT SELECT, INSERT, DELETE ON SCHEMA <NEW_USER> TO _SYS_REPO;
 
 
 [ACCORDION-END]
-

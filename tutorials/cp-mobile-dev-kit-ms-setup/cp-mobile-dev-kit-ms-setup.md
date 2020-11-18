@@ -1,6 +1,6 @@
 ---
 title: Set Up Initial Configuration for an MDK App
-description: Configure a new app of type mobile development kit in the SAP Cloud Platform Mobile Services cockpit.
+description: Configure a new app in the SAP Cloud Platform Mobile Services cockpit and assign some server side features.
 auto_validation: true
 primary_tag: products>mobile-development-kit-client
 tags: [ tutorial>beginner, operating-system>ios, operating-system>android, topic>mobile, products>sap-cloud-platform, products>mobile-development-kit-client, software-product-function>sap-cloud-platform-mobile-services ]
@@ -10,8 +10,8 @@ author_profile: https://github.com/jitendrakansal
 ---
 
 ## Prerequisites
-- [Get a Free Trial Account on SAP Cloud Platform](hcp-create-trial-account)
-- [Enable SAP Cloud Platform Mobile Services](fiori-ios-hcpms-setup)
+- **Tutorial:** If you don't have an SAP Cloud Platform account, follow the tutorial to [set up a free developer account](hcp-create-trial-account).
+- **Tutorial:** [Access SAP Cloud Platform Mobile Services](fiori-ios-hcpms-setup)
 
 ## Details
 ### You will learn
@@ -21,112 +21,71 @@ author_profile: https://github.com/jitendrakansal
 
 [ACCORDION-BEGIN [Step 1: ](Understand the mobile development kit feature)]
 
-Mobile Development Kit (MDK) allow developers and technical business users to build new native mobile applications and customize select SAP native mobile applications in a highly productive environment. It's architecture is based on `NativeScript`, so it supports native cross platform development which means you build your native mobile application once and deploy it to Apple and Android devices.
-
-Mobile Development Kit provides robust online and offline capabilities, business logic, and mobile qualities such as access to the camera and barcode scanner. The first application developed with the Mobile Development Kit is SAP Asset Manager and can easily be customized using the Mobile Development Kit.
+Mobile Development Kit (MDK) extends SAP Cloud Platform Mobile Services and Editor (SAP Web IDE/SAP Business Application Studio/Visual Studio Code extension) to provide you with a complete set of mobile application development and management tools including on-boarding, offline support, and central lifecycle management. It offers a metadata-driven approach to create native supported applications, so no experience with creating iOS or Android apps is required. Additionally, MDK now extends that capability to the [Web](https://blogs.sap.com/2020/10/27/moving-to-multi-channel-with-mobile-development-kit/) as well.
 
 You can find more details in the [Mobile Development Kit developer page](https://developers.sap.com/topics/mobile-development-kit.html).
 
-![MDK](MDK.png)
+!![MDK](MDK.png)
 
-[DONE]
-[ACCORDION-END]
-[ACCORDION-BEGIN [Step 2: ](Log into Mobile Services cockpit)]
-
-Go to [https://cloudplatform.sap.com/index.html](https://cloudplatform.sap.com/index.html "") and click **Login**.
-
-Enter your SAP Cloud Platform account credentials.
-
-![MDK](img_0.png)
-
-Click **Neo Trial** to navigate into SAP Cloud Platform cockpit.
-
-![MDK](img_001.png)
-
-Choose **Services**, look for the **Mobile** category, and click **Mobile Services, users**.  
-
-![MDK](img_005.png)
-
-Click **Go to Service** to open the SAP Cloud Platform Mobile Services cockpit.
-
-![MDK](img_006.png)
-
-If there is any advisory window pops-up, close it.
-
-[DONE]
+[VALIDATE_2]
 [ACCORDION-END]
 
-[ACCORDION-BEGIN [Step 3: ](Configure a new MDK app)]
+[ACCORDION-BEGIN [Step 2: ](Configure a new MDK application in Mobile Services cockpit)]
 
-On the home screen of the Mobile Services cockpit, select **Create new app**.
+Make sure that you have completed required pre-Prerequisites mentioned in this tutorial.
 
-![MDK](img_008.png)
+1. Navigate to [SAP Cloud Platform Mobile Services cockpit on Cloud Foundry environment](fiori-ios-hcpms-setup).
 
-Provide the required information:
+2. On the home screen, select **Create new app**.
 
-| Field | Value |
-|----|----|
-| `Config Templates`| Choose `Mobile Development Kit` |
-| `ID` | `com.sap.mdk.demo` |
-| `Name` | `SAP MDK Demo App` |
+    ![MDK](img_2.2.png)
 
-![MDK](img_009.png)
+3. Provide the required information and click **Next**.
 
->Description and Vendor are optional fields. For more information about these fields, see [Defining Applications](https://help.sap.com/viewer/38dbd9fbb49240f3b4d954e92335e670/Cloud/en-US/17ccff786448442ab2c665ed1cce1505.html) in the SAP Cloud Platform documentation.
+    | Field | Value |
+    |----|----|
+    | `ID` | `com.sap.mdk.demo` |
+    | `Name` | `SAP MDK Demo App` |
 
-Once you have created your application, you see a list of features that are automatically assigned to the app.
+    !![MDK](img_2.3.png)
 
-![MDK](img_010.png)
+    >Other fields are optional. For more information about these fields, see [Creating Applications](https://help.sap.com/doc/f53c64b93e5140918d676b927a3cd65b/Cloud/en-US/docs-en/guides/getting-started/admin/manage.html#creating-applications) in the SAP Cloud Platform documentation.
 
-[DONE]
+4. Select **Mobile Development Kit Application** from the dropdown and Click **Finish**.
+
+    !![MDK](img_2.4.png)
+
+    >If you see a _Confirm Finish_ window, click **OK**.
+
+5. Once you have created your application, you see a list of default features have been automatically assigned to the app.
+
+    !![MDK](img_2.5.png)
+
+    >You can find more information on available features in SAP Cloud Platform Mobile Services in [help documentation](https://help.sap.com/doc/f53c64b93e5140918d676b927a3cd65b/Cloud/en-US/docs-en/guides/getting-started/admin/features.html).
+
+[VALIDATE_3]
 [ACCORDION-END]
 
-[ACCORDION-BEGIN [Step 4: ](Add a sample backend to your MDK app)]
+
+[ACCORDION-BEGIN [Step 3: ](Add a sample backend to your MDK app)]
 
 A sample OData service is available for developers to use during development and testing. The sample OData service also lets you evaluate how delta tokens are handled in your test application.
 
->For more information about these fields, see [Sample Back End](https://help.sap.com/viewer/38dbd9fbb49240f3b4d954e92335e670/Cloud/en-US/1c2e51a24361487f8b0649702d59dd0f.html) in the SAP Cloud Platform documentation.
+>More details on _Sample Back End_ is available in [help documentation](https://help.sap.com/doc/f53c64b93e5140918d676b927a3cd65b/Cloud/en-US/docs-en/guides/features/backend-connectivity/sample.html).
 
-Click on the **+** icon to add Sample Back End feature to your MDK app.
+1. Click the **+** icon to add **Mobile Sample OData ESPM** feature to your MDK app.
 
-Select **Sample Back End** option, and click **OK**.
+    Here, you can view the root service and metadata URLs, and generate sample sales orders and purchase orders for multiple entity sets. You can view the data for each entity in a separate text file, and even can reset the sample data.
 
-![MDK](img_012.png)
+    !![MDK](img_3.1.png)
 
-Here, you can view the root service and metadata URLs, and generate sample sales orders and purchase orders for multiple entity sets. You can view the data for each entity in a separate text file, and even can reset the sample data.
+    !![MDK](img_3.2.png)
 
-![MDK](img_013.png)
+    >If you see a _Confirm Save_ window, click **OK**.
 
-Click **SAP MDK Demo App** to navigate back to app configuration page.
-
-![MDK](img_014.png)
+2. Click `com.sap.mdk.demo` to navigate back to app configuration page.
 
 [VALIDATE_1]
-[ACCORDION-END]
-
-[ACCORDION-BEGIN [Step 5: ](Get familar with other assigned features)]
-
-![MDK](img_015.png)
-
-**App Update:** - Since we specified Mobile Development Kit as the app type, the App Update feature is assigned to the app by default. This feature keeps MDK apps up-to-date and manage the apps' life cycles.
-
-![MDK](img_016.png)
-
-**Client Policies:** - Set client policies like Client Password, Client Logs, Usage report etc. for the selected mobile application.
-
-**Cloud Build:** - Use the cloud build service to configure and build custom Mobile Development Kit clients, SAP Asset Manager Client, SAP Fiori Clients.
-
-**Connectivity:** - Define destinations for the selected application.
-
-**Offline:** - Define offline settings for the selected application. Offline support enables client applications to access back-end data without a connection. When offline, applications access data from an offline store on the client. SAP Cloud Platform Mobile Services moves data between the back end and the client offline store.
-
-**Security:** -  OAuth security is configured to the app by default.
-
-![MDK](img_017.png)
-
->You can find more information on available features in SAP Cloud Platform Mobile Services in [help documentation](https://help.sap.com/viewer/38dbd9fbb49240f3b4d954e92335e670/Cloud/en-US/8c474e7315354db5a7a6c6d76a00bcdc.html).
-
-[DONE]
 [ACCORDION-END]
 
 ---

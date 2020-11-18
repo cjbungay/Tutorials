@@ -11,12 +11,11 @@ time: 5
 <!-- loiof3365096bb2440fcafdb30e9f51877f1 -->
 
 ## Prerequisites
- - **Tutorials:**  You have completed [Install the SAP HANA, express edition clients](https://developers.sap.com/group.hxe-install-clients.html) and [Connect to SAP HANA, express edition using Python](https://developers.sap.com/tutorials/hxe-python-connection.html).
 Ensure that you have Python 2.7 or 3.6 installed.
 
 You have downloaded, extracted, and installed one of the SAP HANA HDB clients. See [Install the SAP HANA, express edition clients](https://developers.sap.com/group.hxe-install-clients.html).
 
-You have also installed the Python driver that comes with the clients. See [Connect to SAP HANA, express edition using Python](https://developers.sap.com/tutorials/hxe-python-connection.html).
+You have also installed the Python driver that comes with the clients. See [Use Clients to Query an SAP HANA Database](https://developers.sap.com/mission.hana-cloud-clients.html).
 
 
 ## Details
@@ -75,6 +74,8 @@ This command installs the `hana_ml` package containing the following modules and
 -   `hana_ml.ml_exceptions`
 
 
+[DONE]
+
 [ACCORDION-END]
 
 [ACCORDION-BEGIN [Step 2: ](Test your installation.)]
@@ -93,5 +94,7 @@ pip list
 ```
 
 You will receive a list of various Python packages that are installed on your system. If you see `hana-ml` and the appropriate version, the Python Client API for ML was installed.
+
+[DONE]
 
 [ACCORDION-END]

@@ -21,9 +21,9 @@ With this, you have your own instance of SAP API Management and Mobile Services 
 
 [ACCORDION-BEGIN [Step 1: ](Log in to SAP Cloud Platform cockpit)]
 
-Log into SAP Cloud Platform
+[Log into SAP Cloud Platform](https://cockpit.hanatrial.ondemand.com/)
 
-Click on **Neo Trial** to open the cockpit for Neo environment.
+Click on **Access Neo Trial** to open the cockpit for Neo environment.
 
 ![Log into cockpit](01-Login-trial-account.png)
 

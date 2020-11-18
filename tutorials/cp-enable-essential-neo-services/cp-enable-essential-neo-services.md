@@ -3,13 +3,12 @@ title: Enable Essential Neo Services
 description: Learn how to enable an essential service, like the Portal service, in the SAP Cloud Platform Neo data center that you can use later for additional tutorials.
 auto_validation: true
 primary_tag: products>sap-cloud-platform
-tags: [ tutorial>beginner ]
+tags: [ tutorial>beginner, tutorial>license ]
 time: 5
 ---
 
 ## Prerequisites
- - You must have an account on the **SAP Cloud Platform**, see here on how to gain access [SAP Cloud Platform](https://cloudplatform.sap.com/index.html)
- - Learn how to sign up for a free trial via this tutorial [SAP Cloud Platform sign up](https://developers.sap.com/tutorials/hcp-create-trial-account.html)
+ - Learn how to [sign up](https://developers.sap.com/tutorials/hcp-create-trial-account.html) for a free  SAP Cloud Platform trial.
 
 ## Details
 ### You will learn

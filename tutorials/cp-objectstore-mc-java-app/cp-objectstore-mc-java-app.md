@@ -11,9 +11,9 @@ primary_tag: topic>java
  - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
  - [Maven 3.3+](https://maven.apache.org/download.cgi)
  - [Eclipse](https://www.eclipse.org/downloads/)
- - [Cloud Foundry CLI](hcp-cf-getting-started)
- - [SAP Cloud Platform Global account](https://help.sap.com/viewer/e275296cbb1e4d5886fa38a2a2c78c06/Cloud/en-US/667f34ba9222450491c2b848cd17e189.html)
- - [Provision Object Store Service](https://cloudplatform.sap.com/capabilities/product-info.Object-Store-on-SAP-Cloud-Platform.55e3958b-e872-49e3-8d2c-8634d200c36a.html)
+ - [Cloud Foundry CLI](https://developers.sap.com/tutorials/cp-cf-download-cli.html)
+ - SAP Cloud Platform account
+ - [Provision Object Store Service](https://discovery-center.cloud.sap/#/serviceCatalog/object-store-service)
  - Basic knowledge of spring
  - Basic knowledge of Cloud Foundry
 
@@ -550,11 +550,11 @@ public class ObjectstoreController {
 									contentType);
 						}
 					} catch (IOException e) {
-						logger.error("Error occured while uploading the object: " + fileItemStream.get().getName() + e);
+						logger.error("Error occurred while uploading the object: " + fileItemStream.get().getName() + e);
 					}
 				}
 			} catch (IOException e) {
-				logger.error("Error occured while uploading the object: " + fileItemStream.get().getName() + e);
+				logger.error("Error occurred while uploading the object: " + fileItemStream.get().getName() + e);
 			}
 		}
 		return new ResponseEntity<>(message, HttpStatus.ACCEPTED);
@@ -598,7 +598,7 @@ public class ObjectstoreController {
 				if (this.objectStoreService.deleteFile(fileName)) {
 					msg = fileName + " is successfully deleted.";
 				} else {
-					msg = "Error occured while deleting the object: " + fileName;
+					msg = "Error occurred while deleting the object: " + fileName;
 					return new ResponseEntity<>(msg, HttpStatus.INTERNAL_SERVER_ERROR);
 				}
 			} else {
@@ -966,7 +966,7 @@ public class ObjectStoreRepository {
 			logger.info(fileName + " is successfully downloaded.");
 
 		} catch (IOException e) {
-			logger.error("Error occured while downloading the object: " + fileName + e);
+			logger.error("Error occurred while downloading the object: " + fileName + e);
 
 		} finally {
 			getContext().close();

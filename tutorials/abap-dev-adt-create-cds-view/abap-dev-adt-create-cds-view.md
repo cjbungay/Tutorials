@@ -3,12 +3,13 @@ title: Create a Simple ABAP CDS View in ADT
 description: You will learn how to create a CDS (Core Data Services) view using ABAP Development Tools (ADT).
 auto_validation: true
 primary_tag: topic>abap-development
-tags: [  tutorial>beginner, topic>abap-development ]
+tags: [  tutorial>beginner, products>sap-netweaver-7.5 ]
 time: 20
 
 ---
 ## Prerequisites
-- Run the transaction `SEPM_DG_OIA_NEW` or transaction `STC01 -> tasklist SAP_BASIS_EPM_OIA_CONFIG`. (If you do not, your CDS view will display empty.)
+- You have a valid instance of an on-premise AS ABAP server, version 7.51 or higher (some ABAP Development Tools may not be available in earlier versions)
+- You have run the transaction `SEPM_DG_OIA_NEW` or transaction `STC01 -> tasklist SAP_BASIS_EPM_OIA_CONFIG`. (If you do not, your CDS view will display empty.)
 -	**Tutorial**: [Create an ABAP Package](abap-dev-create-package)
 
 ## Details
@@ -21,7 +22,7 @@ time: 20
 
 CDS is an extension of the ABAP Dictionary that allows you to define semantically rich data models in the database and to use these data models in your ABAP programs. CDS is a central part of enabling code push-down in ABAP applications.
 
-You can find more information about CDS in the [ABAP keyword documentation](https://help.sap.com/doc/abapdocu_751_index_htm/7.51/en-US/abencds.htm) and the [SAP Community](https://www.sap.com/community/topics/abap.html).
+You can find more information about CDS in the [ABAP keyword documentation](https://help.sap.com/doc/abapdocu_751_index_htm/7.51/en-US/abencds.htm) and the [SAP Community](https://community.sap.com/topics/abap).
 
 Throughout this tutorial, objects name include the suffix `XXX`. Always replace this with your group number or initials.
 
@@ -108,13 +109,16 @@ You will now add fields of related data sources to the SELECT list of `Z_Invoice
 
 4.	Add the `payment_status` from the invoice header to the SELECT list using the association **header**
 
-    ![Image depicting step9-AddFields](step9-AddRelatedFields.png)
+    ![Image depicting step9-AddRelatedFields](step9-AddRelatedFields.png)
 
 [DONE]
 [ACCORDION-END]
 
 [ACCORDION-BEGIN [Step 6: ](Add a CASE statement)]
-If the invoice has been paid, you want to set the `payment_status` to X (true). Do this by implementing a CASE expression, assigning the alias `payment_status` to the CASE expression. Do not forget to separate `payment_status` and `header` with a comma.
+If the invoice has been paid, you want to set the **`payment_status`** to X (true). Do this by implementing a CASE expression, assigning the alias `payment_status` to the CASE expression.
+
+Remove the existing declaration, **`header.payment_status,`** and replace it with the following code. Do not forget to separate **`payment_status`** and **`header`** with a comma.
+
 
 ```ABAP
 case header.payment_status
@@ -124,6 +128,8 @@ end as payment_status,
 ```
 
 ![Image depicting step10-CaseStatement](step10-CaseStatement.png)
+
+> You can check your code below.
 
 [DONE]
 [ACCORDION-END]
@@ -139,7 +145,7 @@ You will now filter the results so that only invoice items with `currency_code =
 
     ```
 
-    ![Image depicting step12-WHERE](step12-WHERE.png)
+    !![Image depicting step12-WHERE](step12-WHERE.png)
 
 2. Save and activate the data definition by choosing **Save** (`Ctrl+S`) and **Activate** (`Ctrl+F3`).
 
@@ -149,9 +155,10 @@ You will now filter the results so that only invoice items with `currency_code =
 [ACCORDION-END]
 
 [ACCORDION-BEGIN [Step 8: ](Check your code and view your changes)]
-Your CDS view code should look like this:
+Your CDS view code should look something like this:
 
 ```ABAP
+
 @AbapCatalog.sqlViewName: 'ZITEMS_XXX'
 @AbapCatalog.compiler.compareFilter: true
 @AccessControl.authorizationCheck: #NOT_REQUIRED
@@ -177,6 +184,7 @@ define view Z_Invoice_Items_2
 }
 
 where currency_code = 'USD'
+
 ```
 Open the CDS View in the Data Preview by choosing **F8**. Your CDS View should look like this:
 

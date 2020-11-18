@@ -1,88 +1,80 @@
 ---
-title: Enable SAP Web IDE Full-Stack
-description: Locate SAP Web IDE Full-Stack, enable it, and access it, all from your browser.
+title: Open SAP Web IDE for SAP HANA Development
+description: Access SAP Web IDE Full-Stack from your browser.
 primary_tag: products>sap-web-ide
+author_name: Marius Obert
+author_profile: https://github.com/iobert
 auto_validation: true
 tags: [  tutorial>beginner, products>sap-cloud-platform, products>sap-web-ide  ]
-time: 5
+time: 10
 ---
 
 ## Details
 ### You will learn  
-  - How to enable SAP Web IDE Full-Stack
+  - How to open SAP Web IDE Full-Stack
 
-You can use many different tools to build and deploy apps on the SAP Cloud Platform, but we recommend SAP Web IDE, a service of SAP Cloud Platform. In this tutorial, you'll locate it, enable it, and access it, all from your browser, without needing to install anything.
+We recommend SAP Web IDE, an SAP Cloud Platform service, to model data for SAP HANA. In this tutorial, you'll locate it and access it, all from your browser, without needing to install anything.
 
 ---
 
-[ACCORDION-BEGIN [Step 1: ](Open SAP Cloud Platform services)]
-Open your SAP Cloud Platform account. Make sure you are in a `Neo` Environment, not one of the new Cloud Foundry environments. `Neo` is the classic, proprietary SAP Cloud Platform.
 
-Go to **Services**.
 
-![services location on SAP CP Home page](1.png)
+[ACCORDION-BEGIN [Step: ](Log into SAP Cloud Platform)]
 
-![services page on SAP CP](2.png)
+1. Go to <https://account.hanatrial.ondemand.com> and log in to your SAP Cloud Platform cockpit.
 
-[DONE]
-[ACCORDION-END]
+2. Click on "Enter Your Access Trial Account" to access the Cloud Foundry environment.
 
-[ACCORDION-BEGIN [Step 2: ](Find SAP Web IDE Full-Stack)]
-In the service catalog, search for **Web IDE**.
+    !![accesstrial](accesstrial.png)
 
-![search on SCP services page](3.png)
+3. Navigate to your **trial subaccount**.
 
-Select the **SAP Web IDE Full-Stack** service.
+    !![subaccount](subaccount.png)
 
-![sap web ide multi-cloud version](4.png)
+
 
 [DONE]
 [ACCORDION-END]
+[ACCORDION-BEGIN [Step : ](Verify that the SAP Web IDE entitlement is in place)]
 
+Select **Entitlements** on the left-hand menu to see all entitlements that are assigned to this subaccount. Locate the **`SAP Web IDE for HANA development`** entitlement from this list.
 
-[ACCORDION-BEGIN [Step 3: ](Enable the service)]
-Once the service page loads, enable the service. This may take a few minutes.
+!![webideEntitlement](webideEntitlement.png)
 
-![enable feature button for web ide](5.png)
-
-Wait for the status to change to the green, **Enabled** status.
-
-![green enabled status icon](5b.png)
+> In case you are missing the entitlement, please follow this tutorial to [Add a New Entitlement to Your Subaccount](cp-cf-entitlements-add).
 
 [DONE]
 [ACCORDION-END]
+[ACCORDION-BEGIN [Step : ](Subscribe to SAP Web IDE for HANA Development)]
 
-[ACCORDION-BEGIN [Step 4: ](Open SAP Web IDE)]
-Once the service is enabled, click **Go to Service**. This opens the new, full-stack SAP Web IDE.
+1. Select **Subscriptions** on the left-hand menu in the SAP Cloud Platform Cockpit to see all available subscriptions.
 
-![go to service link location for web ide](6.png)
+    !![Subscriptions](subscriptions.png)
 
-The full-stack version of SAP Web IDE includes some new features. You will explore them in the following tutorials.
+2. This detail page will show you a service description and provide you with a link to the service documentation. Click the blue button to **Subscribe** to this service.
 
-Copy and paste the URL from your SAP Web IDE Full-Stack window into the text box below.
+    !![subscribe](subscribe.png)
+3.  Click on **Go to Application** to open  SAP Web IDE for HANA development.
+
+    !![goto](gotoapp.png)
+
+    You might be asked to accept a disclaimer if you come here for the first time. **Check** the box and click **accept** to do so.
+
+    ![disclaimer](./disclaimer.png)
+
+
+[DONE]
+[ACCORDION-END]
+[ACCORDION-BEGIN [Step : ](Bookmark the page)]
+
+A new tab opens, and SAP Web IDE Full-Stack loads.
+
+>**Bookmark this page!**  If you create a bookmark to this page, it is easy to get back to SAP Web IDE Full-Stack later.
+
+![SAP Cloud Platform Console - services button](./web_ide_start_screen.png)
+
+
+Copy and paste the URL from your SAP Web IDE Full-Stack into the text box below.
 
 [VALIDATE_4]
-[ACCORDION-END]
-
-
-### Optional
-
-[ACCORDION-BEGIN [Step 5: ](Troubleshooting)]
-Are you having trouble opening SAP Web IDE Full-Stack? If you are seeing a 501/503 error, it may be that your principal propagation flag is not set properly.
-
-To enable your principal propagation flag, in your SAP Cloud Platform cockpit, click **Security** and then **Trust**.
-
-![trust link is CP Cockpit](7.png)
-
-If the **Principal Propagation** flag is set to _Default_ or _Disabled_, you will need to update it. Click **Edit**.
-
-![trust flags](8.png)
-
-Change the value of **Principal Propagation** to _Enabled_ and click **Save**.
-
-![enabled trust flags](9.png)
-
-Now, go back to step 4 and try again to open the SAP Web IDE Full-Stack.
-
-[DONE]
 [ACCORDION-END]
